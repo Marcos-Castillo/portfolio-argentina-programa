@@ -1,0 +1,13 @@
+.fondoPrincipal{
+    width: 100%;
+}
+.retrato{
+    border-radius: 100%;
+    border: 2px solid white;
+    max-width: 20%;
+    position: relative;
+    bottom: 5rem;
+    left: 1rem;
+    z-index: 10;
+    margin-bottom: -5rem;
+}
