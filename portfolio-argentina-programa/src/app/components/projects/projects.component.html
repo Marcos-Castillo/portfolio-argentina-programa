@@ -1,51 +1,70 @@
-<div class="fila">
-    <h2 id="proyectos" class="titulo--secundario">Experiencia profesional</h2>
+<h2>Proyectos</h2>
+<ngb-carousel>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img
+        class="w-100"
+        src="../../../assets/img/codigoSecreto.png"
+        alt="Random first slide"
+      />
+    </div>
+    <div class="carousel-caption">
+      <h3 class="text-dark shadoWhite">Encriptador de texto Challenge Alura</h3>
 
-    <div class="tarjeta--pagina">
-      <img src="img/codigoSecreto.png" alt="imagen" />
-      <div>
-        <p>Encriptador de texto Challenge Alura</p>
-
-        <a
-          class="btn"
-          href="https://github.com/Marcos-Castillo/Oracle-ONE---encriptador"
-          >Repositorio</a
-        >
-        <a
-          href="https://marcos-castillo.github.io/Oracle-ONE---encriptador/"
-          class="btn btn-primary"
-          >Ir a Pagina</a
-        >
-      </div>
+      <a
+        class="btn btn-primary"
+        href="https://github.com/Marcos-Castillo/Oracle-ONE---encriptador"
+        >Repositorio</a
+      >
+      <a
+        class="btn btn-primary"
+        href="https://marcos-castillo.github.io/Oracle-ONE---encriptador/"
+        >Ir a Pagina</a
+      >
     </div>
-    <div class="tarjeta--pagina">
-      <div>
-        <p>Juego del ahorcado Challenge Alura</p>
-        <a
-          class="btn"
-          href="https://github.com/Marcos-Castillo/Oracle-ONE---ahorcado"
-          >Repositorio</a
-        >
-        <a
-          href="https://marcos-castillo.github.io/Oracle-ONE---ahorcado/"
-          class="btn btn-primary"
-          >Ir a Pagina</a
-        >
-      </div>
-      <img src="img/ahorcadp.png" alt="imagen" />
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img
+        class="w-100"
+        src="../../../assets/img/ahorcadp.png"
+        alt="Random second slide"
+      />
     </div>
-    <div class="tarjeta--pagina">
-      <img src="img/practica.png" alt="imagen" />
-      <div>
-        <p>Primera practica HTML con CSS</p>
-        <a class="btn" href="https://github.com/Marcos-Castillo/practica-html"
-          >Repositorio</a
-        >
-        <a
-          href="https://marcos-castillo.github.io/practica-html/"
-          class="btn btn-primary"
-          >Ir a Pagina</a
-        >
-      </div>
+    <div class="carousel-caption">
+      <h3 class="text-dark shadoWhite">Juego del ahorcado Challenge Alura</h3>
+      <a
+        class="btn btn-primary"
+        href="https://github.com/Marcos-Castillo/Oracle-ONE---ahorcado"
+        >Repositorio</a
+      >
+      <a
+        href="https://marcos-castillo.github.io/Oracle-ONE---ahorcado/"
+        class="btn btn-primary"
+        >Ir a Pagina</a
+      >
     </div>
-  </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img
+        class="w-100"
+        src="../../../assets/img/practica.png"
+        alt="Random third slide"
+      />
+    </div>
+    <div class="carousel-caption">
+      <h3 class="text-dark shadoWhite">Primera practica HTML con CSS</h3>
+      <a
+        class="btn btn-primary"
+        href="https://github.com/Marcos-Castillo/practica-html"
+        >Repositorio</a
+      >
+      <a
+        href="https://marcos-castillo.github.io/practica-html/"
+        class="btn btn-primary"
+        >Ir a Pagina</a
+      >
+    </div>
+  </ng-template>
+</ngb-carousel>

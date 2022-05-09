@@ -12,6 +12,8 @@ import { EducationComponent } from './components/education/education.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { AboutComponent } from './components/about/about.component';
 import { SecondaryHeadingComponent } from './components/secondary-heading/secondary-heading.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SecondaryHeadingComponent } from './components/secondary-heading/second
     EducationComponent,
     ExperienceComponent,
     AboutComponent,
-    SecondaryHeadingComponent
+    SecondaryHeadingComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
