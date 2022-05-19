@@ -12,4 +12,9 @@ export class AbilitiesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
+   
+  
+
 }
