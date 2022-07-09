@@ -15,6 +15,7 @@ import { SecondaryHeadingComponent } from './components/secondary-heading/second
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import { HomeComponent } from './components/home/home.component';
     AboutComponent,
     SecondaryHeadingComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent    
   ],
   imports: [
     BrowserModule,
