@@ -1,23 +1,60 @@
-<div class="container py-5 d-flex justify-content-center">
-  <div class="colum w-50 py-5">
-    <h2 class="display-5 mb-4">Login</h2>
-    <form class="form-group" action="">
-      <label class="mt-4 form-label" for="usuario">Usuario</label>
-      <input class="form-control" type="mail" [autofocus]="1" name="usuario" />
-      <label class="mt-4 form-label" for="pasword">Password</label>
-      <input
-        class="form-control"
-        type="password"
-        name="password"
-        id=""
-        [autofocus]="2"
-      />
-      <input
-        class="mt-4 form-control btn btn-primary"
-        type="submit"
-        value="login"
-        [autofocus]="3"
-      />
-    </form>
+<div class="container my-4">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card bg-dark text-white" style="border-radius: 1rem">
+        <div class="card-body p-5 text-center">
+          <form [formGroup]="form" class="mb-md-5 mt-md-4 pb-5">
+            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+            <p class="text-white-50 mb-5">
+              Por favor ingrese su usuario y contraseña.
+            </p>
+
+            <div class="form-outline form-white mb-4">
+              <label class="form-label" for="typeEmailX">Email</label>
+              <input
+                type="email"
+                class="form-control form-control-lg"
+                formControlName="email"
+                [ngClass]="{
+                  'is-invalid': email?.errors && email?.touched,
+                  'is-valid': !email?.errors && email?.touched
+                }"
+              />
+              <div *ngIf="email?.errors && email?.touched">
+                <p *ngIf="email?.hasError('required')" class="text-danger">
+                  el email es requerido
+                </p>
+                <p *ngIf="email?.hasError('email')" class="text-danger">
+                  el email debe ser valido
+                </p>
+              </div>
+            </div>
+            <label class="form-label" for="typePasswordX">Contraseña</label>
+            <div class="form-outline form-white mb-4">
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                formControlName="password"
+                [ngClass]="{
+                  'is-invalid': password?.errors && password?.touched,
+                  'is-valid': !password?.errors && password?.touched
+                }"
+              />
+              <div *ngIf="password?.errors && password?.touched">
+                <p *ngIf="password?.hasError('required')" class="text-danger">
+                  la contraseña es requerida
+                </p>
+                <p *ngIf="password?.hasError('minlength')" class="text-danger">
+                  minimo 8 caracteres
+                </p>
+              </div>
+            </div>
+            <button class="btn btn-outline-light btn-lg px-5" type="submit">
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -14,6 +14,7 @@ import { AboutComponent } from './components/about/about.component';
 import { SecondaryHeadingComponent } from './components/secondary-heading/secondary-heading.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,9 +34,31 @@ import { HomeComponent } from './components/home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+/*
+En su app.module.tsarchivo simplemente agregue las siguientes cosas:
+
+declarar
+
+import { LocationStrategy, HashLocationStrategy} from '@angular/common';
+y en proveedores agregar lo siguiente
+
+   @NgModule({
+        declarations: [...],
+        imports:[...],
+        providers:[..,{ provide: LocationStrategy, useClass: HashLocationStrategy },..]
+        ...,
+    })
+Espero que esto resuelva su problema.
+
+Y si es posible mantén tus Rutas en archivo aparte.
+
+Salud
+ */
