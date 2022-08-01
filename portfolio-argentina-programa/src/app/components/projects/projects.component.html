@@ -1,70 +1,20 @@
 <h2 class="display-5 my-4">Proyectos</h2>
 <ngb-carousel>
-  <ng-template ngbSlide>
+  <ng-template ngbSlide *ngFor="let proyect of proyectos">
     <div class="picsum-img-wrapper">
       <img
         class="w-100"
-        src="../../../assets/img/codigoSecreto.png"
+        src="{{ proyect.descripcion }}"
         alt="Random first slide"
       />
     </div>
     <div class="carousel-caption">
-      <h3 class="text-dark shadoWhite">Encriptador de texto Challenge Alura</h3>
+      <h3 class="text-dark shadoWhite">{{ proyect.titulo }}</h3>
 
-      <a
-      class="btn btn-primary m-1"
-        href="https://github.com/Marcos-Castillo/Oracle-ONE---encriptador"
+      <a class="btn btn-primary m-1" href="{{ proyect.urlRepositorio }}"
         >Repositorio</a
       >
-      <a
-      class="btn btn-primary m-1"
-        href="https://marcos-castillo.github.io/Oracle-ONE---encriptador/"
-        >Ir a Pagina</a
-      >
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img
-        class="w-100"
-        src="../../../assets/img/ahorcadp.png"
-        alt="Random second slide"
-      />
-    </div>
-    <div class="carousel-caption">
-      <h3 class="text-dark shadoWhite">Juego del ahorcado Challenge Alura</h3>
-      <a
-      class="btn btn-primary m-1"
-        href="https://github.com/Marcos-Castillo/Oracle-ONE---ahorcado"
-        >Repositorio</a
-      >
-      <a
-        href="https://marcos-castillo.github.io/Oracle-ONE---ahorcado/"
-        class="btn btn-primary m-1"
-        >Ir a Pagina</a
-      >
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img
-        class="w-100"
-        src="../../../assets/img/practica.png"
-        alt="Random third slide"
-      />
-    </div>
-    <div class="carousel-caption">
-      <h3 class="text-dark shadoWhite">Primera practica HTML con CSS</h3>
-      <a
-        class="btn btn-primary m-1"
-        href="https://github.com/Marcos-Castillo/practica-html"
-        >Repositorio</a
-      >
-      <a
-        href="https://marcos-castillo.github.io/practica-html/"
-        class="btn btn-primary m-1"
-        >Ir a Pagina</a
-      >
+      <a class="btn btn-primary m-1" href="{{ proyect.link }}">Ir a Pagina</a>
     </div>
   </ng-template>
 </ngb-carousel>

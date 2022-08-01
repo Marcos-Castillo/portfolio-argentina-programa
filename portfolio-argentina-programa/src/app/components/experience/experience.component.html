@@ -1,62 +1,13 @@
 <article>
   <h2 class="display-5 my-4">Experiencia</h2>
 
-
-  <div class="card mb-4 shadow">
-    <h6 class="card-header">
-      Desarrollo web
-    </h6>
-    <div class="row align-items-center">
-      <p class="col m-4">nov. de 2021 - actualidad</p>
-      <p class="col m-4">
-        Desarrollo de páginas web a base de HTML css y JavaScript
-      </p>
-    </div>
-  </div>
-
-  <div class="card mb-4 shadow">
-    <h6 class="card-header">Técnico de reparación de PC</h6>
-    <div class="row align-items-center">
-      <p class="col m-4">feb. de 2013 - actualidad</p>
-      <p class="col m-4">
-        Reparación de PC, instalación y configuración avanzada de PC y diversos
-        SO (hardware software). Conectividad de REDES
-      </p>
-    </div>
-  </div>
-
-  <div class="card mb-4 shadow">
-    <h6 class="card-header">Técnico de soporte de TI</h6>
+  <div *ngFor="let exp of experiencia" class="card mb-4 shadow">
+    <h6 class="card-header">{{exp.puesto}}</h6>
     <div class="row align-items-center">
       <p class="col m-4">
-        Jazzlplat <br />
-        jun. de 2009 - feb. de 2013
+        {{exp.ingreso}} - {{exp.egreso}}
       </p>
-      <p class="col m-4">
-        Resolución de averías en remoto y soporte a técnicos desplazados en sede
-        de clientes: recidenciales, Pymes y Profesionales Gestión de incidencias
-        sobre servicios: telefonia analógica, VoIP, Centralitas Telefónicas,
-        servicios de internet sobre tecnologías: ISDN, ADSL2+/SHDSL/ VDSL
-        Activaciones y puesta a punto de clientes nuevos, sobre los servicios
-        antes mencionados -Se realizaron suplencias temporales de Team Leader
-        (líder de grupo de trabajo) donde tuve a cargo 10 personas. Help Desk
-        nivel 1- Soporte Operativo, nivel 2 (CAT) - Sop. Oper, nivel 2 (CAT
-        Pymes Activaciones)
-      </p>
-    </div>
-  </div>
-
-  <div class="card mb-4 shadow">
-    <h6 class="card-header">Técnico de reparación de PC</h6>
-    <div class="row align-items-center">
-      <p class="col m-4">
-        Neyra hnos <br />
-        ene. de 2006 - jun. de 2008
-      </p>
-      <p class="col m-4 ">
-        Reparación de PC, instalación y configuración avanzada de PC y diversos
-        SO (hardware software). Conectividad de REDES
-      </p>
+      <p class="col m-4">{{exp.descripcion}}</p>
     </div>
   </div>
 </article>

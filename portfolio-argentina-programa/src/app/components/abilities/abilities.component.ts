@@ -6,47 +6,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./abilities.component.css'],
 })
 export class AbilitiesComponent implements OnInit {
-  variableGeneral = [
+  
+  skills = [
     {
-      name: 'HTML',
-      porcentaje: 90,
+      "id": 1,
+      "nombre": "HTML + CSS",
+      "competencia": 90
     },
     {
-      name: 'CSS',
-      porcentaje: 90,
+      "id": 2,
+      "nombre": "Java",
+      "competencia": 70
     },
     {
-      name: 'CSS',
-      porcentaje: 90,
+      "id": 3,
+      "nombre": "JavaScript",
+      "competencia": 80
     },
     {
-      name: 'CSS',
-      porcentaje: 90,
+      "id": 4,
+      "nombre": "Angular",
+      "competencia": 70
     },
-
-    /*
-      <p class="shadow">
-    <ngb-progressbar type="primary" [value]="90" [striped]="true" [animated]="true" height="1.5rem"
-      ><span class="fs-6">HTML</span></ngb-progressbar
-    >
-  </p>
-  <p class="shadow">
-    <ngb-progressbar type="primary" [value]="90" [striped]="true" [animated]="true" height="1.5rem"
-      ><span class="fs-6">CSS</span></ngb-progressbar
-    >
-  </p>
-  <p class="shadow">
-    <ngb-progressbar type="primary" [value]="70" [striped]="true" [animated]="true" height="1.5rem"
-      ><span class="fs-6">JavaScript</span></ngb-progressbar
-    >
-  </p>
-  <p class="shadow">
-    <ngb-progressbar type="primary" [value]="60" [striped]="true" [animated]="true" height="1.5rem"
-      ><span class="fs-6">JAVA</span></ngb-progressbar
-    >
-  </p>
-  */
+    {
+      "id": 5,
+      "nombre": "Spring Boot",
+      "competencia": 50
+    }
   ];
+
   constructor() {}
 
   ngOnInit(): void {}
