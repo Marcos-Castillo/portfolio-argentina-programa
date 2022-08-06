@@ -1,8 +1,35 @@
 <article>
   <h2 class="display-5 my-4">Experiencia</h2>
-
+  <div class="row"><div>
+    <button
+    class="btn btn-sm badge text-black btn-outline-secondary float-end m-1"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#experienciaModal"
+    >
+    <i class="fa fa-plus"></i>
+    </button>
+  </div></div>
   <div *ngFor="let exp of experiencia" class="card mb-4 shadow">
-    <h6 class="card-header">{{exp.puesto}}</h6>
+    <h6 class="card-header">{{exp.puesto}}
+
+       <!-- Button trigger modal -->
+       <button
+       class="btn badge text-black btn-outline-secondary float-end"
+       type="button"
+       data-bs-toggle="modal"
+       data-bs-target="#experienciaModal"
+     >
+       <i class="fa fa-pencil"></i>
+     </button>
+     <button
+       class="btn badge text-black btn-outline-secondary float-end mx-1"
+       type="button"
+     >
+       <i class="fa fa-trash"></i>
+     </button>
+     <!-- Modal -->
+    </h6>
     <div class="row align-items-center">
       <p class="col m-4">
         {{exp.ingreso}} - {{exp.egreso}}
@@ -10,4 +37,97 @@
       <p class="col m-4">{{exp.descripcion}}</p>
     </div>
   </div>
+
+  <!-- Modal -->
+    <!-- User Form Modal -->
+    <div
+      class="modal fade"
+      id="experienciaModal"
+      tabindex="-1"
+      aria-labelledby="experienciaModalLabel"
+      aria-hidden="true"
+      role="dialog"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Experiencia</h5>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="py-1">
+              <form class="form" novalidate="">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Puesto</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Puesto"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col mb-3">
+                        <div class="form-group">
+                          <label>Descripcion</label>
+                          <textarea
+                            class="form-control"
+                            rows="3"
+                            [maxLength]="255"
+                            placeholder="Descripcion"
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Ingreso</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="mes. año"
+                          />
+                        </div>
+                      </div>
+                    
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Egreso</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="mes. año"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col d-flex justify-content-end">
+                    <button class="btn btn-primary" type="submit">
+                      Guardar cambios
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end  modal -->
 </article>

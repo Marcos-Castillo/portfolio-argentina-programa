@@ -1,13 +1,173 @@
 <article>
-    <h2 class="display-5 my-4">Acerca de</h2>
-    <p>Soy un desarollador web apasionado de la tecnoligia siempre buscando algo nuevo que aprender y 
-        emprendiendo nuevos proyectos . Si quieren ver mis proyectos lo podran encontrar en mi 
-        
-        <a
-        class="link-dark"
-        target="_blank"
-        href="https://github.com/Marcos-Castillo"
-        >Github</a
+  <button
+    class="btn btn-sm badge text-black btn-outline-secondary float-end"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#aboutModal"
+  >
+    <i class="fa fa-pencil"></i>
+  </button>
+
+  <button
+        class="btn badge text-black btn-outline-secondary float-end mx-1"
+        type="button"
       >
-    </p>
+        <i class="fa fa-trash"></i>
+      </button>
+      
+  <h2 class="display-5 my-4">Acerca de</h2>
+
+  <p>
+    Soy un desarollador web apasionado de la tecnoligia siempre buscando algo
+    nuevo que aprender y emprendiendo nuevos proyectos . Si quieren ver mis
+    proyectos lo podran encontrar en mi
+
+    <a
+      class="link-dark"
+      target="_blank"
+      href="https://github.com/Marcos-Castillo"
+      >Github</a
+    >
+  </p>
+
+  <!-- Modal -->
+  <!-- User Form Modal -->
+  <div
+    class="modal fade"
+    id="aboutModal"
+    tabindex="-1"
+    aria-labelledby="aboutModalLabel"
+    aria-hidden="true"
+    role="dialog"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Acerca de</h5>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="py-1">
+            <form class="form" novalidate="">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Nombre</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Nombre"
+                    />
+
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Apellido</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Apellido"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Profesion</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Profesion"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Ubicacion</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Ubicacion"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="row">
+                    <div class="col mb-3">
+                      <div class="form-group">
+                        <label>Descripcion</label>
+                        <textarea
+                          class="form-control"
+                          rows="3"
+                          [maxLength]="255"
+                          placeholder="Descripcion"
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label>Imgen Perfil - url</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          placeholder="http://www.example.com"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label>Github - url</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          placeholder="http://www.example.com"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label>Linkedin - url</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          placeholder="http://www.example.com"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col d-flex justify-content-end">
+                  <button class="btn btn-primary" type="submit">
+                    Guardar cambios
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end  modal -->
 </article>

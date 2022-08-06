@@ -1,20 +1,143 @@
+
 <h2 class="display-5 my-4">Proyectos</h2>
+<div class="row"><div>
+  <button
+  class="btn btn-sm badge text-black btn-outline-secondary float-end m-1"
+  type="button"
+  data-bs-toggle="modal"
+  data-bs-target="#proyectoModal"
+  >
+  <i class="fa fa-plus"></i>
+  </button>
+</div></div>
 <ngb-carousel>
   <ng-template ngbSlide *ngFor="let proyect of proyectos">
     <div class="picsum-img-wrapper">
       <img
         class="w-100"
-        src="{{ proyect.descripcion }}"
+        src="{{proyect.descripcion}}"
         alt="Random first slide"
       />
     </div>
     <div class="carousel-caption">
-      <h3 class="text-dark shadoWhite">{{ proyect.titulo }}</h3>
-
-      <a class="btn btn-primary m-1" href="{{ proyect.urlRepositorio }}"
-        >Repositorio</a
-      >
-      <a class="btn btn-primary m-1" href="{{ proyect.link }}">Ir a Pagina</a>
+      <div class="image_title">
+        <a href="{{proyect.link}}">{{proyect.titulo}}</a>
+        <a href="{{proyect.urlRepositorio}}">Repositorio Github</a>
+        <!-- Button trigger modal -->
+   <button
+   class="btn badge text-black btn-outline-dark center-block mx-1"
+   type="button"
+   data-bs-toggle="modal"
+   data-bs-target="#proyectoModal"
+ >
+   <i class="fa fa-pencil"></i>
+ </button>
+ <button
+   class="btn badge text-black btn-outline-dark center-block mx-1"
+   type="button"
+ >
+   <i class="fa fa-trash"></i>
+ </button>
+ <!-- Modal -->
+      </div> 
+    
+       
     </div>
+     
   </ng-template>
+ 
 </ngb-carousel>
+
+ <!-- Modal -->
+    <!-- User Form Modal -->
+    <div
+      class="modal fade"
+      id="proyectoModal"
+      tabindex="-1"
+      aria-labelledby="proyectoModalLabel"
+      aria-hidden="true"
+      role="dialog"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Proyectos</h5>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="py-1">
+              <form class="form" novalidate="">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Titulo proyecto</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Titulo proyecto"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col mb-3">
+                        <div class="form-group">
+                          <label>Descripcion</label>
+                          <textarea
+                            class="form-control"
+                            rows="3"
+                            [maxLength]="255"
+                            placeholder="Descripcion"
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Repositorio link</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="http://www.example.com"
+                          />
+                        </div>
+                      </div>
+                    
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Proyecto link</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="http://www.example.com"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col d-flex justify-content-end">
+                    <button class="btn btn-primary" type="submit">
+                      Guardar cambios
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end  modal -->
+  

@@ -1,10 +1,111 @@
-<h2 class="display-5 my-4">Hard Skills & Soft Skills</h2>
-<article class="container">
+ 
+  <article >
+ <div class="row">
+  <h2 class="display-5 my-4">Hard Skills & Soft Skills</h2> 
+<div>
+  <button
+  class="btn btn-sm badge text-black btn-outline-secondary float-end m-1"
+  type="button"
+  data-bs-toggle="modal"
+  data-bs-target="#abilitiesModal"
+  >
+  <i class="fa fa-plus"></i>
+  </button>
+</div>
+ </div> 
 
-  <p  *ngFor="let skill of skills" class="shadow">
-    <ngb-progressbar type="primary" [value]=skill.competencia  [striped]="true" [animated]="true" height="1.5rem"
-      ><span class="fs-6">{{skill.nombre}} </span></ngb-progressbar
+  <div *ngFor="let skill of skills" class="row">
+  <p class="col-11">
+    <ngb-progressbar
+      class="shadow"
+      type="primary"
+      [value]="skill.competencia"
+      [striped]="true"
+      [animated]="true"
+      height="1.5rem"
+      ><span class="fs-6">{{ skill.nombre }} </span></ngb-progressbar
     >
   </p>
+  <p class="col-1">
+    <button
+      class="btn badge text-black btn-outline-secondary mx-1"
+      type="button"
+    >
+      <i class="fa fa-trash"></i>
+    </button>
+    <button
+      class="btn badge text-black btn-outline-secondary mx-1"
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#abilitiesModal"
+    >
+      <i class="fa fa-pencil"></i>
+    </button>
+  </p>
 
+  <!-- Modal -->
+  <!-- User Form Modal -->
+  <div
+    class="modal fade"
+    id="abilitiesModal"
+    tabindex="-1"
+    aria-labelledby="abilitiesModalLabel"
+    aria-hidden="true"
+    role="dialog"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Hard Skills & Soft Skills</h5>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="py-1">
+            <form class="form" novalidate="">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Nombre</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Nombre"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Habilidad</label>
+                    <input
+                      class="form-control"
+                      type="number"
+                      min="0"
+                      max="100"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col d-flex justify-content-end">
+                  <button class="btn btn-primary" type="submit">
+                    Guardar cambios
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end  modal -->
+</div>
 </article>

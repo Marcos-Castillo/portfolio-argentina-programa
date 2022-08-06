@@ -1,16 +1,137 @@
 <article>
   <h2 class="display-5 my-4">Educación</h2>
-
+  <div class="row"><div>
+    <button
+    class="btn btn-sm badge text-black btn-outline-secondary float-end m-1"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#educationModal"
+    >
+    <i class="fa fa-plus"></i>
+    </button>
+  </div></div>
   <div *ngFor="let edu of educacion" class="card mb-4 shadow">
-    <h6 class="card-header">{{ edu.titulo }}</h6>
+    <h6 class="card-header">
+      {{ edu.titulo }}
+      <!-- Button trigger modal -->
+      <button
+        class="btn badge text-black btn-outline-secondary float-end"
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#educationModal"
+      >
+        <i class="fa fa-pencil"></i>
+      </button>
+      <button
+        class="btn badge text-black btn-outline-secondary float-end mx-1"
+        type="button"
+      >
+        <i class="fa fa-trash"></i>
+      </button>
+      <!-- Modal -->
+    </h6>
     <p class="card-body">
       {{ edu.descripcion }}
     </p>
     <p class="container">
       {{ edu.expedicion }}
-      <a class="btn btn-ligth" target="_blank" href="{{edu.credencial}}"
+      <a class="btn btn-ligth" target="_blank" href="{{ edu.credencial }}"
         >Mostrar credencial</a
       >
     </p>
+
+    <!-- Modal -->
+    <!-- User Form Modal -->
+    <div
+      class="modal fade"
+      id="educationModal"
+      tabindex="-1"
+      aria-labelledby="educationModalLabel"
+      aria-hidden="true"
+      role="dialog"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Educación</h5>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="py-1">
+              <form class="form" novalidate="">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Titulo</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Titulo"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col mb-3">
+                        <div class="form-group">
+                          <label>Descripcion</label>
+                          <textarea
+                            class="form-control"
+                            rows="3"
+                            [maxLength]="255"
+                            placeholder="Descripcion"
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Expedicion</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="mes. 2000"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Credencial - url</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="http://www.example.com"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col d-flex justify-content-end">
+                    <button class="btn btn-primary" type="submit">
+                      Guardar cambios
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end  modal -->
   </div>
 </article>
