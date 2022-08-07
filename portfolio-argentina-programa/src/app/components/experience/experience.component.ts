@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Experiencia } from 'src/app/model/experiencia';
+import { ExperienciaService } from 'src/app/service/experiencia.service';
 
 @Component({
   selector: 'app-experience',
@@ -6,39 +10,93 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./experience.component.css']
 })
 export class ExperienceComponent implements OnInit {
-  experiencia = [
-    {
-      "id": 1,
-      "puesto": "Desarrollo web",
-      "ingreso": "nov. de 2021",
-      "egreso": "actualidad",
-      "descripcion": "Desarrollo de páginas web a base de HTML css y JavaScript"
-    },
-    {
-      "id": 2,
-      "puesto": "Técnico de reparación de PC",
-      "ingreso": "feb. de 2013",
-      "egreso": "actualidad",
-      "descripcion": "Reparación de PC, instalación y configuración avanzada de PC y diversos SO (hardware software). Conectividad de REDES"
-    },
-    {
-      "id": 3,
-      "puesto": "Técnico de soporte de TI",
-      "ingreso": "jun. de 2009",
-      "egreso": "feb. de 2013",
-      "descripcion": "Resolución de averías en remoto y soporte a técnicos desplazados en sede de clientes: recidenciales, Pymes y Profesionales Gestión de incidencias sobre servicios: telefonia analógica, VoIP, Centralitas Telefónicas, servicios de internet "
-    },
-    {
-      "id": 4,
-      "puesto": "Técnico de reparación de PC",
-      "ingreso": "ene. de 2006",
-      "egreso": "jun. de 2008",
-      "descripcion": "Reparación de PC, instalación y configuración avanzada de PC y diversos SO (hardware software). Conectividad de REDES"
-    }
-  ];
-  constructor() { }
+  experiencia?:Experiencia[];
+  editExperiencia?:Experiencia;
+  deleteExperiencia?:Experiencia;
+  id_persona!: Number;
+
+  constructor(
+    private experienciaService:ExperienciaService
+    ) {}
 
   ngOnInit(): void {
+    this.verExperiencia();
   }
 
+  
+  public verExperiencia(): void {
+    this.experienciaService.verExperiencias().subscribe(
+      (response: Experiencia[]) => {
+        this.experiencia=response;
+        response.map(exp=>{
+          this.id_persona=exp.id_persona;
+        });
+      },
+      (error:HttpErrorResponse) => {
+        console.log(error)
+      }
+    );
+  }
+
+  public borrarExperiencia(): void {
+    
+    let idBorrar: Number=this.deleteExperiencia?.id|| 0;
+    this.experienciaService.borrarExperiencia(idBorrar).subscribe(
+      (response) => {
+        console.log(response);
+        this.verExperiencia();
+      },
+      (error:HttpErrorResponse) => {
+        alert(error.message)
+      }
+    );
+  }
+
+  public agregarExperiencia(addForm: NgForm): void {
+    document.getElementById('add-employee-form')?.click();
+    this.experienciaService.crearExperiencia(addForm.value).subscribe(
+      (response: Experiencia) => {
+        console.log(response);
+        this.verExperiencia();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
+  public editarExperiencia(experiencia: Experiencia): void {
+    this.experienciaService.editarExperiencia(experiencia).subscribe(
+      (response: Experiencia) => {
+        console.log(response);
+        this.verExperiencia();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onOpenModal(experiencia?: Experiencia, mode?: string): void {
+    const contenedor = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-bs-target', '#addExperienciaModal');
+    }
+    if (mode === 'edit') {
+      this.editExperiencia = experiencia;
+      button.setAttribute('data-bs-target', '#experienciaModal');
+    }
+    if (mode === 'delete') {
+      this.deleteExperiencia = experiencia;
+      button.setAttribute('data-bs-target', '#deleteExperienciaModal');
+    }
+    contenedor?.appendChild(button);
+    button.click();
+  }
 }

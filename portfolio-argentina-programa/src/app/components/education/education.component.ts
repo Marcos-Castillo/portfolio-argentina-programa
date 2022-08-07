@@ -1,32 +1,104 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm, ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from 'src/app/app.component';
+import { Educacion } from 'src/app/model/educacion';
+import { EducacionService } from 'src/app/service/educacion.service';
+ 
 
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
-  styleUrls: ['./education.component.css']
+  styleUrls: ['./education.component.css'],
 })
 export class EducationComponent implements OnInit {
+  educacion?: Educacion[];
+  editEducacion?:Educacion;
+  deleteEducacion?:Educacion;
+  id_persona!: Number;
 
-  educacion = [
-    {
-      "id": 1,
-      "titulo": "Desarollador Front-end",
-      "descripcion": "ONE Formación Front-end - Esta formación forma parte del Programa ONE, una alianza entre Alura Latam y Oracle. tecnologías de la Web (HTML, CSS y JavaScript) diseño web resposivo.",
-      "expedicion": "Expedición: abr. 2022",
-      "credencial": "https://app.aluracursos.com/degree/certificate/fd776307-7988-4b01-a9a6-e644c5b7e98c"
-    },
-    {
-      "id": 2,
-      "titulo": "Fundamentos y lógica de programación",
-      "descripcion": "Fundamentos básicos de la programación. Programación imperativa y estructura de datos mediante el lenguaje JavaScript. Programación Orientada a Objetos Como introducción al paradigma de objetos con Ruby.",
-      "expedicion": "Expedición: dic. 2021",
-      "credencial": "https://mumuki.io/argentina-programa/certificates/verify/7P5LNiCqiOnTZA_1"
-    }
-  ];
-
-  constructor() { }
+  constructor(
+    private educacionService:EducacionService
+    ) {}
 
   ngOnInit(): void {
+    this.verEducacion();
   }
 
+  
+  public verEducacion(): void {
+    this.educacionService.verEducacion().subscribe(
+      (response: Educacion[]) => {
+        this.educacion=response;
+        response.map(edu=>{
+          this.id_persona=edu.id_persona;
+        });
+      },
+      (error:HttpErrorResponse) => {
+        console.log(error)
+      }
+    );
+  }
+
+  public borrarEducacion(): void {
+    
+    let idBorrar: Number=this.deleteEducacion?.id|| 0;
+    this.educacionService.borrarEducacion(idBorrar).subscribe(
+      (response) => {
+        console.log(response);
+        this.verEducacion();
+      },
+      (error:HttpErrorResponse) => {
+        alert(error.message)
+      }
+    );
+  }
+
+  public agregarEducacion(addForm: NgForm): void {
+    document.getElementById('add-employee-form')?.click();
+    this.educacionService.crearEducacion(addForm.value).subscribe(
+      (response: Educacion) => {
+        console.log(response);
+        this.verEducacion();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
+  public editarEducacion(educacion: Educacion): void {
+    this.educacionService.editarEducacion(educacion).subscribe(
+      (response: Educacion) => {
+        console.log(response);
+        this.verEducacion();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onOpenModal(educacion?: Educacion, mode?: string): void {
+    const contenedor = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-bs-target', '#addEducationModal');
+    }
+    if (mode === 'edit') {
+      this.editEducacion = educacion;
+      button.setAttribute('data-bs-target', '#educationModal');
+    }
+    if (mode === 'delete') {
+      this.deleteEducacion = educacion;
+      button.setAttribute('data-bs-target', '#deleteEducacionModal');
+    }
+    contenedor?.appendChild(button);
+    button.click();
+  }
 }

@@ -1,173 +1,183 @@
-<article>
-  <button
-    class="btn btn-sm badge text-black btn-outline-secondary float-end"
-    type="button"
-    data-bs-toggle="modal"
-    data-bs-target="#aboutModal"
+<header>
+  <div class="">
+    <div class="imagen-cabecera"></div>
+    <img class="retrato" src="{{ persona?.urlImg }}" alt="retrato" />
+    <h2 class="display-5 my-4">
+      {{ persona?.nombre }} {{ persona?.apellido }}
+    </h2>
+    <p>{{ persona?.profesion }}</p>
+    <p>{{ persona?.ubicacion }}</p>
+  </div>
+</header>
+
+<button
+  class="btn btn-sm badge text-black btn-outline-secondary float-end"
+  type="button"
+  (click)="onOpenModal(persona,'edit')"
+>
+  <i class="fa fa-pencil"></i>
+</button>
+
+<button
+  class="btn badge text-black btn-outline-secondary float-end mx-1"
+  type="button"
+></button>
+<h2 class="display-5 my-4">Acerca de</h2>
+
+<p>
+  {{ persona?.about }}
+  <a class="link-dark" target="_blank" href="{{ persona?.urlGithub }}"
+    >Github</a
   >
-    <i class="fa fa-pencil"></i>
-  </button>
+</p>
 
-  <button
-        class="btn badge text-black btn-outline-secondary float-end mx-1"
-        type="button"
-      >
-        <i class="fa fa-trash"></i>
-      </button>
-      
-  <h2 class="display-5 my-4">Acerca de</h2>
-
-  <p>
-    Soy un desarollador web apasionado de la tecnoligia siempre buscando algo
-    nuevo que aprender y emprendiendo nuevos proyectos . Si quieren ver mis
-    proyectos lo podran encontrar en mi
-
-    <a
-      class="link-dark"
-      target="_blank"
-      href="https://github.com/Marcos-Castillo"
-      >Github</a
-    >
-  </p>
-
-  <!-- Modal -->
-  <!-- User Form Modal -->
-  <div
-    class="modal fade"
-    id="aboutModal"
-    tabindex="-1"
-    aria-labelledby="aboutModalLabel"
-    aria-hidden="true"
-    role="dialog"
-  >
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Acerca de</h5>
-          <button
-            type="button"
-            class="btn-close text-reset"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div class="py-1">
-            <form class="form" novalidate="">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Nombre</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      placeholder="Nombre"
-                    />
-
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label>Apellido</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      placeholder="Apellido"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Profesion</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      placeholder="Profesion"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Ubicacion</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      placeholder="Ubicacion"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="row">
-                    <div class="col mb-3">
-                      <div class="form-group">
-                        <label>Descripcion</label>
-                        <textarea
-                          class="form-control"
-                          rows="3"
-                          [maxLength]="255"
-                          placeholder="Descripcion"
-                        ></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div class="form-group">
-                        <label>Imgen Perfil - url</label>
-                        <input
-                          class="form-control"
-                          type="text"
-                          placeholder="http://www.example.com"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div class="form-group">
-                        <label>Github - url</label>
-                        <input
-                          class="form-control"
-                          type="text"
-                          placeholder="http://www.example.com"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div class="form-group">
-                        <label>Linkedin - url</label>
-                        <input
-                          class="form-control"
-                          type="text"
-                          placeholder="http://www.example.com"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col d-flex justify-content-end">
-                  <button class="btn btn-primary" type="submit">
-                    Guardar cambios
-                  </button>
-                </div>
-              </div>
-            </form>
+<!-- Editar Modal -->
+<div
+  class="modal fade"
+  id="educationModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="educationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateEmployeeModalLabel">
+          Editar {{ editPersona?.nombre }} {{ editPersona?.apellido }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              ngModel="{{ editPersona?.nombre }}"
+              name="nombre"
+              class="form-control"
+              id="nombre"
+              aria-describedby="nombre"
+              placeholder="nombre"
+            />
           </div>
-        </div>
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input
+              type="text"
+              ngModel="{{ editPersona?.apellido }}"
+              name="apellido"
+              class="form-control"
+              id="apellido"
+              aria-describedby="apellido"
+              placeholder="apellido"
+            />
+          </div>
+          <input
+            type="hidden"
+            ngModel="{{ editPersona?.id }}"
+            name="id"
+            class="form-control"
+            id="id"
+            placeholder="id"
+          />
+          <div class="form-group">
+            <label for="profesion">profesion</label>
+            <input
+              type="text"
+              ngModel="{{ editPersona?.profesion }}"
+              name="profesion"
+              class="form-control"
+              id="profesion"
+              placeholder="profesion"
+            />
+          </div>
+          <div class="form-group">
+            <label for="ubicacion">ubicacion</label>
+            <input
+              type="text"
+              ngModel="{{ editPersona?.ubicacion }}"
+              name="ubicacion"
+              class="form-control"
+              id="ubicacion"
+              placeholder="ubicacion"
+            />
+          </div>
+          <div class="form-group">
+            <label for="about">about</label>
+            <input
+              type="text"
+              ngModel="{{ editPersona?.about }}"
+              name="about"
+              class="form-control"
+              id="about"
+              name="about"
+              placeholder="about"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="urlLinkedin">urlLinkedin</label>
+            <input
+              type="text"
+              ngModel="{{ editPersona?.urlLinkedin }}"
+              name="urlLinkedin"
+              class="form-control"
+              id="urlLinkedin"
+              name="urlLinkedin"
+              placeholder="urlLinkedin"
+            />
+          </div>
+          <div class="form-group">
+            <label for="urlImg">urlImg</label>
+            <input
+              type="text"
+              ngModel="{{ editPersona?.urlImg }}"
+              name="urlImg"
+              class="form-control"
+              id="urlImg"
+              name="urlImg"
+              placeholder="urlImg"
+            />
+          </div>
+          <div class="form-group">
+            <label for="urlGithub">urlGithub</label>
+            <input
+              type="text"
+              ngModel="{{ editPersona?.urlGithub }}"
+              name="urlGithub"
+              class="form-control"
+              id="urlGithub"
+              name="urlGithub"
+              placeholder="urlGithub"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              id=""
+              data-bs-dismiss="modal"
+              class="btn btn-secondary"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="editarPersona(editForm.value)"
+              data-bs-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Guardar cambios
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-
-  <!-- end  modal -->
-</article>
+</div>

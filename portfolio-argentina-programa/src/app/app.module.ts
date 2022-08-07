@@ -11,10 +11,9 @@ import { AbilitiesComponent } from './components/abilities/abilities.component';
 import { EducationComponent } from './components/education/education.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { AboutComponent } from './components/about/about.component';
-import { SecondaryHeadingComponent } from './components/secondary-heading/secondary-heading.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
@@ -28,7 +27,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     EducationComponent,
     ExperienceComponent,
     AboutComponent,
-    SecondaryHeadingComponent,
     LoginComponent,
     HomeComponent    
   ],
@@ -37,7 +35,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

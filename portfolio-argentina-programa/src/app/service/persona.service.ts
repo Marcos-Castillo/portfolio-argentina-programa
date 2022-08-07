@@ -8,8 +8,8 @@ import { Persona } from '../model/persona';
   providedIn: 'root'
 })
 export class PersonaService {
-  private apiServerUrl = 'http://localhost:8080' ;
-
+  private apiServerUrl =environment.apiBaseUrl;
+   
   constructor(private http: HttpClient) { }
 
   public verPersonas():Observable<Persona[]>{
@@ -28,7 +28,7 @@ export class PersonaService {
     return this.http.put<Persona>(`${this.apiServerUrl}/editar/persona`, persona);
   }
 
-  public borrarPersona(idPersona:number):Observable<void>{
+  public borrarPersona(idPersona:Number):Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/eliminar/persona/${idPersona}`);
   }
 }

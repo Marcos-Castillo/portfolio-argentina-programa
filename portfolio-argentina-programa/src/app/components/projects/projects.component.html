@@ -4,13 +4,19 @@
   <button
   class="btn btn-sm badge text-black btn-outline-secondary float-end m-1"
   type="button"
-  data-bs-toggle="modal"
-  data-bs-target="#proyectoModal"
+  (click)="onOpenModal(editProyecto,'add')"
   >
   <i class="fa fa-plus"></i>
   </button>
 </div></div>
-<ngb-carousel>
+<div *ngIf="proyectos?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">No hay Registros!</h4>
+      <p>No se encontro Experiencia</p>
+  </div>
+</div>
+<ngb-carousel class="shadow">
+ 
   <ng-template ngbSlide *ngFor="let proyect of proyectos">
     <div class="picsum-img-wrapper">
       <img
@@ -25,16 +31,16 @@
         <a href="{{proyect.urlRepositorio}}">Repositorio Github</a>
         <!-- Button trigger modal -->
    <button
-   class="btn badge text-black btn-outline-dark center-block mx-1"
+   class="btn badge text-white btn-outline-light center-block m-1"
    type="button"
-   data-bs-toggle="modal"
-   data-bs-target="#proyectoModal"
+   (click)="onOpenModal(proyect,'edit')"
  >
    <i class="fa fa-pencil"></i>
  </button>
  <button
-   class="btn badge text-black btn-outline-dark center-block mx-1"
+   class="btn badge text-white btn-outline-light center-block m-1"
    type="button"
+   (click)="onOpenModal(proyect,'delete')"
  >
    <i class="fa fa-trash"></i>
  </button>
@@ -48,96 +54,117 @@
  
 </ngb-carousel>
 
- <!-- Modal -->
-    <!-- User Form Modal -->
-    <div
-      class="modal fade"
-      id="proyectoModal"
-      tabindex="-1"
-      aria-labelledby="proyectoModalLabel"
-      aria-hidden="true"
-      role="dialog"
-    >
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Proyectos</h5>
-            <button
-              type="button"
-              class="btn-close text-reset"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="py-1">
-              <form class="form" novalidate="">
-                <div class="row">
-                  <div class="col">
-                    <div class="form-group">
-                      <label>Titulo proyecto</label>
-                      <input
-                        class="form-control"
-                        type="text"
-                        placeholder="Titulo proyecto"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="row">
-                      <div class="col mb-3">
-                        <div class="form-group">
-                          <label>Descripcion</label>
-                          <textarea
-                            class="form-control"
-                            rows="3"
-                            [maxLength]="255"
-                            placeholder="Descripcion"
-                          ></textarea>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Repositorio link</label>
-                          <input
-                            class="form-control"
-                            type="text"
-                            placeholder="http://www.example.com"
-                          />
-                        </div>
-                      </div>
-                    
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Proyecto link</label>
-                          <input
-                            class="form-control"
-                            type="text"
-                            placeholder="http://www.example.com"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+<!-- Agregar nuevo Modal -->
+<div class="modal fade" id="addProyectoModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="addEmployeeModalLabel">Agregar Proyecto </h5>
+          <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+       </div>
 
-                <div class="row">
-                  <div class="col d-flex justify-content-end">
-                    <button class="btn btn-primary" type="submit">
-                      Guardar cambios
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
+       <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="agregarProyecto(addForm)">
+          <div class="form-group">
+             <label for="titulo">Titulo</label>
+             <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="titulo" required>
+
+            <input type="hidden" ngModel name="id" class="form-control" id="id" placeholder="id">
+            <input type="hidden" ngModel="{{id_persona}}" name="id_persona" class="form-control" id="id_persona" placeholder="id_persona">
           </div>
-        </div>
-      </div>
+          <div class="form-group">
+             <label for="descripcion">Url Imagen</label>
+             <input type="text" ngModel name="descripcion" class="form-control" id="descripcion" placeholder="descripcion" required>
+          </div>
+          <div class="form-group">
+             <label for="urlRepositorio">urlRepositorio</label>
+             <input type="text" ngModel name="urlRepositorio" class="form-control" id="urlRepositorio" placeholder="http://www.example.com/" required>
+          </div>
+          <div class="form-group">
+             <label for="link">link</label>
+             <input type="text" ngModel name="link" class="form-control" id="link" placeholder="http://www.example.com/" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Cerrar</button>
+             <button [disabled]="addForm.invalid" type="submit" data-bs-dismiss="modal" class="btn btn-primary" >Save changes</button>
+          </div>
+          </form>
+       </div>
     </div>
+  </div>
+  </div>
 
-    <!-- end  modal -->
-  
+<!-- Editar Modal -->
+<div class="modal fade" id="proyectoModal" tabindex="-1" role="dialog" aria-labelledby="educationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="updateModalLabel">Editar {{editProyecto?.titulo}}</h5>
+           <button
+           type="button"
+           class="btn-close text-reset"
+           data-bs-dismiss="modal"
+           aria-label="Close"
+         ></button>
+        </div>
+        <div class="modal-body">
+           <form #editForm="ngForm">
+              <div class="form-group">
+                 <label for="titulo">Titulo</label>
+                 <input type="text" ngModel="{{editProyecto?.titulo}}" name="titulo" class="form-control" id="titulo" aria-describedby="titulo" placeholder="titulo">
+              </div>
+              <input type="hidden" ngModel="{{editProyecto?.id}}" name="id" class="form-control" id="id" placeholder="id">
+              <input type="hidden" ngModel="{{editProyecto?.id_persona}}" name="id_persona" class="form-control" id="id_persona" placeholder="id_persona">
+              <div class="form-group">
+                 <label for="descripcion">Url Imagen</label>
+                 <input type="text" ngModel="{{editProyecto?.descripcion}}" name="descripcion" class="form-control" id="descripcion" placeholder="descripcion">
+              </div>
+              <div class="form-group">
+                 <label for="urlRepositorio">Repositorio</label>
+                 <input type="text" ngModel="{{editProyecto?.urlRepositorio}}" name="urlRepositorio" class="form-control" id="urlRepositorio" placeholder="urlRepositorio">
+              </div>
+              <div class="form-group">
+                 <label for="link">link</label>
+                 <input type="text" ngModel="{{editProyecto?.link}}" name="link" class="form-control" id="link" name="link" placeholder="link">
+              </div>
+              <div class="modal-footer">
+                 <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Cerrar</button>
+                 <button (click)="editarProyecto(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
+              </div>
+           </form>
+        </div>
+     </div>
+  </div>
+</div>
+<!-- modal eliminar proyecto-->
+<div id="deleteProyectoModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">						
+          <h4 class="modal-title">Borrar Proyecto</h4>
+          <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+        </div>
+        <div class="modal-body">					
+          <p>Estas por borrar un registro.¿Estas seguro?</p>
+          <p class="fw-bold">{{deleteProyecto?.titulo}}</p>
+          <p class="text-danger"><small>Esta accion no se puede deshacer.</small></p>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+          <input type="button" (click)="borrarProyecto()" class="btn btn-danger" data-bs-dismiss="modal" value="Delete">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
