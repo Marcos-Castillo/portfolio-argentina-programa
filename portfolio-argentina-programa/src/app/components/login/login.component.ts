@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private ruta: Router
   ) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      nombreUsuario: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       });
   }
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   get email() {
-    return this.form.get('email');
+    return this.form.get('nombreUsuario');
   }
   get password() {
     return this.form.get('password');
@@ -37,11 +37,13 @@ export class LoginComponent implements OnInit {
   onEnviar(event: Event) {
     event.preventDefault;
     this.authService.iniciarSesion(this.form.value).subscribe((data) => {
+      console.log("login component dentro inicio ses");
       console.log('data: ' + JSON.stringify(data));
       this.ruta.navigate(['/home']);
       
     });
   }
 
+  
 
 }

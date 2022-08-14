@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  url = environment.apiBaseUrl + '/auth';
+  url = environment.apiBaseUrl + '/auth/login';
   currentUserSubject: BehaviorSubject<any>;
   constructor(private http: HttpClient) {
     console.log('auth en ejecucion');

@@ -26,6 +26,7 @@ export class EducationComponent implements OnInit {
   }
 
   
+  
   public verEducacion(): void {
     this.educacionService.verEducacion().subscribe(
       (response: Educacion[]) => {
