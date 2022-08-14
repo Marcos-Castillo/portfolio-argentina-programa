@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Skill } from 'src/app/model/skill';
 import { SkillService } from 'src/app/service/skill.service';
 
+
 @Component({
   selector: 'app-abilities',
   templateUrl: './abilities.component.html',
@@ -54,7 +55,7 @@ export class AbilitiesComponent implements OnInit {
   }
 
   public agregarSkill(addForm: NgForm): void {
-    document.getElementById('add-employee-form')?.click();
+    document.getElementById('add--form')?.click();
     this.skillService.crearSkill(addForm.value).subscribe(
       (response: Skill) => {
         console.log(response);

@@ -53,7 +53,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   public agregarProyecto(addForm: NgForm): void {
-    document.getElementById('add-employee-form')?.click();
+    document.getElementById('add--form')?.click();
     this.proyectoService.crearProyecto(addForm.value).subscribe(
       (response: Proyecto) => {
         console.log(response);

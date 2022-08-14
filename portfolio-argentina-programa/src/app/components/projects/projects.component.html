@@ -9,10 +9,10 @@
   <i class="fa fa-plus"></i>
   </button>
 </div></div>
-<div *ngIf="proyectos?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+<div *ngIf="(proyectos?.length == 0)||(proyectos?.length==null)" class="col-lg-12 col-md-12 col-xl-12">
   <div class="alert alert-danger" role="alert">
       <h4 class="alert-heading">No hay Registros!</h4>
-      <p>No se encontro Experiencia</p>
+      <p>No se encontro Proyectos</p>
   </div>
 </div>
 <ngb-carousel class="shadow">
@@ -59,7 +59,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
        <div class="modal-header">
-          <h5 class="modal-title" id="addEmployeeModalLabel">Agregar Proyecto </h5>
+          <h5 class="modal-title" id="addModalLabel">Agregar Proyecto </h5>
           <button
           type="button"
           class="btn-close text-reset"
@@ -91,7 +91,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Cerrar</button>
-             <button [disabled]="addForm.invalid" type="submit" data-bs-dismiss="modal" class="btn btn-primary" >Save changes</button>
+             <button [disabled]="addForm.invalid" type="submit" data-bs-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
           </div>
           </form>
        </div>
@@ -161,8 +161,8 @@
           <p class="text-danger"><small>Esta accion no se puede deshacer.</small></p>
         </div>
         <div class="modal-footer">
-          <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-          <input type="button" (click)="borrarProyecto()" class="btn btn-danger" data-bs-dismiss="modal" value="Delete">
+          <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
+          <input type="button" (click)="borrarProyecto()" class="btn btn-danger" data-bs-dismiss="modal" value="Borrar">
         </div>
       </form>
     </div>

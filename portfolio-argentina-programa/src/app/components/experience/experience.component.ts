@@ -53,7 +53,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   public agregarExperiencia(addForm: NgForm): void {
-    document.getElementById('add-employee-form')?.click();
+    document.getElementById('add--form')?.click();
     this.experienciaService.crearExperiencia(addForm.value).subscribe(
       (response: Experiencia) => {
         console.log(response);

@@ -53,7 +53,7 @@ export class AboutComponent implements OnInit {
   }
 
   public agregarPersona(addForm: NgForm): void {
-    document.getElementById('add-employee-form')?.click();
+    document.getElementById('add--form')?.click();
     this.personaService.crearPersona(addForm.value).subscribe(
       (response: Persona) => {
         console.log(response);

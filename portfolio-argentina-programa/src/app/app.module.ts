@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,8 +14,8 @@ import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './service/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ExperienceComponent,
     AboutComponent,
     LoginComponent,
-    HomeComponent    
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,12 +36,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},
+    { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 
 /*
 En su app.module.tsarchivo simplemente agregue las siguientes cosas:

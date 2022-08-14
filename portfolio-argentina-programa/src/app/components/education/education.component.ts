@@ -55,7 +55,7 @@ export class EducationComponent implements OnInit {
   }
 
   public agregarEducacion(addForm: NgForm): void {
-    document.getElementById('add-employee-form')?.click();
+    document.getElementById('add--form')?.click();
     this.educacionService.crearEducacion(addForm.value).subscribe(
       (response: Educacion) => {
         console.log(response);
