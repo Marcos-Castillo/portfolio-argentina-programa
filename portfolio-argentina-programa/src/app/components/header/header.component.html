@@ -8,6 +8,7 @@
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasNavbar"
       aria-controls="offcanvasNavbar"
+      onclick="verificarLogin()"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,6 +46,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/login"><i class="bi bi-person"></i> Login</a>
+          </li>
+          <li class="nav-item" *ngIf="logueado">
+            <a class="nav-link" routerLink="/login" (click)="logout()"><i class="bi bi-box-arrow-left"></i> Logout {{nombreUsuario}}</a>
           </li>
         </ul>
       </div>

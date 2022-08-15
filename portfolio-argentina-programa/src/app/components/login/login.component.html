@@ -10,22 +10,22 @@
             </p>
 
             <div class="form-outline form-white mb-4">
-              <label class="form-label" for="typeEmailX">Email</label>
+              <label class="form-label" for="nombreUsuario">Email</label>
               <input
-                type="email"
+                type="text"
                 class="form-control form-control-lg"
                 formControlName="nombreUsuario"
                 [ngClass]="{
-                  'is-invalid': email?.errors && email?.touched,
-                  'is-valid': !email?.errors && email?.touched
+                  'is-invalid': nombreUsuario?.errors && nombreUsuario?.touched,
+                  'is-valid': !nombreUsuario?.errors && nombreUsuario?.touched
                 }"
               />
-              <div *ngIf="email?.errors && email?.touched">
-                <p *ngIf="email?.hasError('required')" class="text-danger">
-                  el email es requerido
+              <div *ngIf="nombreUsuario?.errors && nombreUsuario?.touched">
+                <p *ngIf="nombreUsuario?.hasError('required')" class="text-danger">
+                  el Nombre Usuario es requerido
                 </p>
-                <p *ngIf="email?.hasError('email')" class="text-danger">
-                  el email debe ser valido
+                <p *ngIf="nombreUsuario?.hasError('nombreUsuario')" class="text-danger">
+                  el nombreUsuario debe ser valido
                 </p>
               </div>
             </div>
@@ -45,7 +45,7 @@
                   la contraseña es requerida
                 </p>
                 <p *ngIf="password?.hasError('minlength')" class="text-danger">
-                  minimo 8 caracteres
+                  minimo 5 caracteres
                 </p>
               </div>
             </div>

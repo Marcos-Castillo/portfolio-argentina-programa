@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { NgForm, ReactiveFormsModule } from '@angular/forms';
-import { AppComponent } from 'src/app/app.component';
+import { NgForm} from '@angular/forms';
 import { Educacion } from 'src/app/model/educacion';
 import { EducacionService } from 'src/app/service/educacion.service';
  

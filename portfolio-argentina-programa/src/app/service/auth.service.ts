@@ -12,12 +12,10 @@ export class AuthService {
   constructor(private http: HttpClient) {
     console.log('auth en ejecucion');
     this.currentUserSubject = new BehaviorSubject<any>(
-      JSON.parse(sessionStorage.getItem('currenUser') || '{}')
-    ); // {"currenUser": "accessToken"}
+      JSON.parse(sessionStorage.getItem('currentUser') || '{}')
+    );
   }
   iniciarSesion(credenciales: any): Observable<any> {
-    //sessionStorage.setItem('currentUser','accessToken')//
-    console.log(credenciales);
     return this.http.post(this.url, credenciales).pipe(
       map((data) => {
         sessionStorage.setItem('currentUser', JSON.stringify(data));

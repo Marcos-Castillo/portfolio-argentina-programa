@@ -10,11 +10,12 @@ import { Educacion } from '../model/educacion';
 export class EducacionService {
 
   private apiServerUrl =environment.apiBaseUrl;
+
    
   constructor(private http: HttpClient) { }
 
   public verEducacion():Observable<Educacion[]>{
-    return this.http.get<Educacion[]>(`${this.apiServerUrl}ver/educacion`); ///ver/educacion
+    return this.http.get<Educacion[]>(`${this.apiServerUrl}/ver/educacion`); ///ver/educacion
   }
 
   public buscarEducacion(idEducacion:Number):Observable<Educacion>{
