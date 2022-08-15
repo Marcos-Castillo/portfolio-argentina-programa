@@ -12,7 +12,7 @@
             <div class="form-outline form-white mb-4">
               <label class="form-label" for="nombreUsuario">Email</label>
               <input
-                type="text"
+                type="email"
                 class="form-control form-control-lg"
                 formControlName="nombreUsuario"
                 [ngClass]="{
@@ -52,9 +52,11 @@
             <button [disabled]="form.invalid" class="btn btn-outline-light btn-lg px-5" type="submit">
               Login
             </button>
+            <p><button  class="btn btn-outline-light btn-lg px-5 mt-4" routerLink="/curriculum" type="button">Ver portfolio</button></p>
           </form>
         </div>
       </div>
     </div>
   </div>
+  
 </div>

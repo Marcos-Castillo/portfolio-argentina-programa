@@ -18,9 +18,8 @@ export class LoginComponent implements OnInit {
     private ruta: Router
   ) {
     this.form = this.formBuilder.group({
-      nombreUsuario: ['', [Validators.required, Validators.minLength(4)]],
-      //nombreUsuario: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
+      nombreUsuario: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
       });
   }
 

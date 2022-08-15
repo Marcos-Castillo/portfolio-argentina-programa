@@ -14,6 +14,7 @@ export class AboutComponent implements OnInit {
   persona?:Persona;
   editPersona?:Persona;
   deletePersona?:Persona;
+  
 
   constructor(
     private personaService:PersonaService

@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './service/interceptor.service';
+import { CurriculumComponent } from './components/curriculum/curriculum.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { InterceptorService } from './service/interceptor.service';
     AboutComponent,
     LoginComponent,
     HomeComponent,
+    CurriculumComponent,
   ],
   imports: [
     BrowserModule,
