@@ -18,3 +18,4 @@ export interface Persona {
     proyectoList:Array<Proyecto>;
     skillList:Array<Skill>;
 }
+

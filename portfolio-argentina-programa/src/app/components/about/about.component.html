@@ -1,10 +1,18 @@
 <header>
   <div class="">
-    <div class="imagen-cabecera"></div>
+    <div class="imagen-cabecera">
+  
+  </div>
+  <div class="float-end zoom" >
+    <a class="nav-link" routerLink="/portfolio"  (click)="logout()"
+      ><i class="bi bi-box-arrow-left"></i> Logout {{ nombreUsuario }}</a
+    >
+    </div>
     <img class="retrato" src="{{ persona?.urlImg }}" alt="retrato" />
     <h2 class="display-5 my-4">
       {{ persona?.nombre }} {{ persona?.apellido }}
     </h2>
+   
     <p>{{ persona?.profesion }}</p>
     <p>{{ persona?.ubicacion }}</p>
   </div>

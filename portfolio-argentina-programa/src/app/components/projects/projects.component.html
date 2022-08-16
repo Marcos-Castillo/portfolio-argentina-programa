@@ -9,50 +9,58 @@
   <i class="fa fa-plus"></i>
   </button>
 </div></div>
+
 <div *ngIf="(proyectos?.length == 0)||(proyectos?.length==null)" class="col-lg-12 col-md-12 col-xl-12">
   <div class="alert alert-danger" role="alert">
       <h4 class="alert-heading">No hay Registros!</h4>
       <p>No se encontro Proyectos</p>
   </div>
 </div>
-<ngb-carousel class="shadow">
- 
-  <ng-template ngbSlide *ngFor="let proyect of proyectos">
-    <div class="picsum-img-wrapper">
-      <img
-        class="w-100"
-        src="{{proyect.descripcion}}"
-        alt="Random first slide"
-      />
+
+<div>
+  <div class="col-12">
+    <div class="p-3">
+      <div class="d-flex justify-content-around gap-4 row row-cols-6">
+        <div *ngFor="let proyect of proyectos">
+          <div class="shadow zoom">
+            <div class="card-size" >
+             
+            <div class="d-flex justify-content-around">
+              <button
+              class="btn badge text-black col-5 m-1 btn-aux"
+            type="button"
+            (click)="onOpenModal(proyect,'edit')"
+          >
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button
+          class="btn badge text-black col-5 m-1 btn-aux"
+            type="button"
+            (click)="onOpenModal(proyect,'delete')"
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+            </div>
+            <img
+            class="rounded img-fluid w-100"
+            src="{{ proyect.descripcion }}"
+          />
+            </div>
+            <div class="">
+              <div class="image_title d-flex">
+                <a href="{{ proyect.link }}">{{ proyect.titulo }}</a>
+                <a href="{{ proyect.urlRepositorio }}">Repositorio Github</a>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="carousel-caption">
-      <div class="image_title">
-        <a href="{{proyect.link}}">{{proyect.titulo}}</a>
-        <a href="{{proyect.urlRepositorio}}">Repositorio Github</a>
-        <!-- Button trigger modal -->
-   <button
-   class="btn badge text-white btn-outline-light center-block m-1"
-   type="button"
-   (click)="onOpenModal(proyect,'edit')"
- >
-   <i class="fa fa-pencil"></i>
- </button>
- <button
-   class="btn badge text-white btn-outline-light center-block m-1"
-   type="button"
-   (click)="onOpenModal(proyect,'delete')"
- >
-   <i class="fa fa-trash"></i>
- </button>
- <!-- Modal -->
-      </div> 
-    
-       
-    </div>
-     
-  </ng-template>
- 
-</ngb-carousel>
+  </div>
+</div>
+
+
 
 <!-- Agregar nuevo Modal -->
 <div class="modal fade" id="addProyectoModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">

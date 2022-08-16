@@ -2,3 +2,10 @@
 body {
     background-color: #e5e5e5;
 }
+.zoom:hover {
+    transform: scale(1.1);
+    transition: all 1s ease 0s;
+  }
+  .zoom{
+    transition: all 1s ease 0s;
+  }

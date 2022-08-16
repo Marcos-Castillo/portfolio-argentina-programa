@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 import { Persona } from 'src/app/model/persona';
+import { AuthService } from 'src/app/service/auth.service';
 import { PersonaService } from 'src/app/service/persona.service';
 
 @Component({
@@ -14,14 +16,38 @@ export class AboutComponent implements OnInit {
   persona?:Persona;
   editPersona?:Persona;
   deletePersona?:Persona;
+
+  logueado: boolean = false;
+  currentUser = JSON.parse('{}');
+  nombreUsuario = '';
   
 
   constructor(
-    private personaService:PersonaService
+    private personaService:PersonaService,
+    private authService: AuthService
     ) {}
 
   ngOnInit(): void {
     this.verPersona();
+    this.verificarLogin();
+  }
+  verificarLogin(): void {
+    this.currentUser = JSON.parse(
+      sessionStorage.getItem('currentUser') || '{}'
+    );
+    if (this.currentUser.nombreUsuario) {
+      this.nombreUsuario = this.currentUser.nombreUsuario;
+      this.logueado = true;
+    }
+  }
+
+  logout(): void {
+    sessionStorage.setItem('currentUser', '{}');
+    this.authService.currentUserSubject = new BehaviorSubject<any>(
+      JSON.parse(sessionStorage.getItem('currentUser') || '{}')
+    );
+    this.verificarLogin();
+    console.log('sesion finalizada');
   }
 
   

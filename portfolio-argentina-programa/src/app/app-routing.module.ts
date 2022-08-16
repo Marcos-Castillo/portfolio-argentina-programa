@@ -7,11 +7,11 @@ import { LoginComponent } from './components/login/login.component';
 import { GuardGuard } from './service/guard.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo:'home', pathMatch: 'full', canActivate:[GuardGuard]},
+  { path: '', redirectTo:'portfolio', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
-  { path: 'curriculum', component: CurriculumComponent },
+  { path: 'portfolio', component: CurriculumComponent },
   { path: 'home', component: HomeComponent , canActivate:[GuardGuard]},
-  { path: '**',component: HomeComponent, canActivate:[GuardGuard]}
+  { path: '**',component: CurriculumComponent}
 ];
 
 @NgModule({
