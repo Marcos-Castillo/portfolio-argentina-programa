@@ -13,7 +13,7 @@ export class ProjectsComponent implements OnInit {
   proyectos?:Proyecto[];
   editProyecto?:Proyecto;
   deleteProyecto?:Proyecto;
-  id_persona!: Number;
+  id_persona: Number = 213;
 
   constructor(
     private proyectoService:ProyectoService

@@ -15,7 +15,7 @@ export class AbilitiesComponent implements OnInit {
 
   editSkill?:Skill;
   deleteSkill?:Skill;
-  id_persona!: Number;
+  id_persona: Number = 213;
 
   constructor(
     private skillService:SkillService

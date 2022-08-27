@@ -14,7 +14,7 @@ export class EducationComponent implements OnInit {
   educacion?: Educacion[];
   editEducacion?:Educacion;
   deleteEducacion?:Educacion;
-  id_persona!: Number;
+  id_persona: Number = 213;
 
   constructor(
     private educacionService:EducacionService
@@ -31,7 +31,7 @@ export class EducationComponent implements OnInit {
       (response: Educacion[]) => {
         this.educacion=response;
         response.map(edu=>{
-          this.id_persona=edu.id_persona;
+          
         });
       },
       (error:HttpErrorResponse) => {

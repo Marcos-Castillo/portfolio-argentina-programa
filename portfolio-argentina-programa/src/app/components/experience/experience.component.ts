@@ -13,7 +13,7 @@ export class ExperienceComponent implements OnInit {
   experiencia?:Experiencia[];
   editExperiencia?:Experiencia;
   deleteExperiencia?:Experiencia;
-  id_persona!: Number;
+  id_persona: Number = 213;
 
   constructor(
     private experienciaService:ExperienciaService
