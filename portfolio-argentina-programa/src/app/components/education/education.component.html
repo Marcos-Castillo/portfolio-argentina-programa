@@ -131,7 +131,7 @@
                   </div>
                   <div class="modal-footer">
                      <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Cerrar</button>
-                     <button (click)="editarEducacion(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
+                     <button (click)="editarEducacion(editForm.value)" [disabled]="editForm.invalid" data-bs-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
                   </div>
                </form>
             </div>

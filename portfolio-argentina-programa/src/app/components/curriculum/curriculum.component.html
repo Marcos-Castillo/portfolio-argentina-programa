@@ -4,6 +4,7 @@
     <img
       class="w-100 img-thumbnail image-circle my-5 trasform3d"
       src="{{ persona?.urlImg }}"
+      onerror="this.src='../../../assets/img/perfil.jpeg';"
       alt="retrato"
     />
   </div>
@@ -101,7 +102,8 @@
             <div class="card-size" >
               <img
               class="rounded img-fluid w-100"
-              src="{{ proyect.descripcion }}"
+              src="{{proyect.descripcion}}" 
+              onerror="this.src='../../../assets/img/error.jpg';"
             />
             </div>
             <div class="">

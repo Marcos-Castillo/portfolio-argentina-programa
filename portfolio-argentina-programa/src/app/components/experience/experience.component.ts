@@ -22,7 +22,7 @@ export class ExperienceComponent implements OnInit {
   ngOnInit(): void {
     this.verExperiencia();
   }
-
+ 
   
   public verExperiencia(): void {
     this.experienciaService.verExperiencias().subscribe(

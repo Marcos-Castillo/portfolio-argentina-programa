@@ -42,10 +42,10 @@
 <!-- Editar Modal -->
 <div
   class="modal fade"
-  id="educationModal"
+  id="aboutModal"
   tabindex="-1"
   role="dialog"
-  aria-labelledby="educationModalLabel"
+  aria-labelledby="aboutModalLabel"
   aria-hidden="true"
 >
   <div class="modal-dialog modal-lg" role="document">
@@ -178,6 +178,7 @@
             </button>
             <button
               (click)="editarPersona(editForm.value)"
+              [disabled]="editForm.invalid"
               data-bs-dismiss="modal"
               class="btn btn-primary"
             >

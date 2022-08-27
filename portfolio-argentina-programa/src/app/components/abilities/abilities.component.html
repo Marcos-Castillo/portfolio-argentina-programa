@@ -113,7 +113,7 @@
                 <label for="competencia">Competencia</label>
                 <input
                   type="number"
-                  min="0"
+                  min="1"
                   max="100"
                   ngModel
                   name="competencia"
@@ -203,7 +203,7 @@
                 <label for="competencia">competencia</label>
                 <input
                   type="number"
-                  min="0"
+                  min="1"
                   max="100"
                   ngModel="{{ editSkill?.competencia }}"
                   name="competencia"
@@ -223,6 +223,7 @@
                 </button>
                 <button
                   (click)="editarSkill(editForm.value)"
+                  [disabled]="editForm.invalid"
                   data-bs-dismiss="modal"
                   class="btn btn-primary"
                 >

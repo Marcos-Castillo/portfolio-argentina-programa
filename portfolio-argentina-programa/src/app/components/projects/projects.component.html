@@ -44,6 +44,7 @@
             <img
             class="rounded img-fluid w-100"
             src="{{ proyect.descripcion }}"
+            onerror="this.src='../../../assets/img/error.jpg';"
           />
             </div>
             <div class="">
@@ -142,7 +143,7 @@
               </div>
               <div class="modal-footer">
                  <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Cerrar</button>
-                 <button (click)="editarProyecto(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
+                 <button (click)="editarProyecto(editForm.value)" [disabled]="editForm.invalid" data-bs-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
               </div>
            </form>
         </div>

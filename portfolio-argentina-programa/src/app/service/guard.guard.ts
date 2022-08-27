@@ -19,8 +19,6 @@ export class GuardGuard implements CanActivate {
       
       } else
       {
-        console.log("guards ####" + currentUser);
-        console.table(currentUser);
       this.ruta.navigate(['/login']);
       return false;
       

@@ -113,15 +113,15 @@ export class AboutComponent implements OnInit {
     button.style.display = 'none';
     button.setAttribute('data-bs-toggle', 'modal');
     if (mode === 'add') {
-      button.setAttribute('data-bs-target', '#addEducationModal');
+      button.setAttribute('data-bs-target', '#addaboutModal');
     }
     if (mode === 'edit') {
       this.editPersona = persona;
-      button.setAttribute('data-bs-target', '#educationModal');
+      button.setAttribute('data-bs-target', '#aboutModal');
     }
     if (mode === 'delete') {
       this.deletePersona = persona;
-      button.setAttribute('data-bs-target', '#deletePersonaModal');
+      button.setAttribute('data-bs-target', '#deleteAboutModal');
     }
     contenedor?.appendChild(button);
     button.click();
