@@ -1,17 +1,16 @@
 
-  <article>
+  <article id="skill-container">
   <div class="row">
     <h2 class="display-5 my-4">Hard Skills & Soft Skills</h2>
     <div>
       <button
         class="btn btn-sm badge text-black btn-outline-secondary float-end m-1"
         type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#abilitiesModal"
-        (click)="onOpenModal(editSkill, 'add')"
+        (click)="onOpenModal(editSkill,'add')"
       >
         <i class="fa fa-plus"></i>
       </button>
+ 
     </div>
   </div>
 
@@ -49,103 +48,11 @@
       <button
         class="btn badge text-black btn-outline-secondary mx-1"
         type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#abilitiesModal"
         (click)="onOpenModal(skill, 'edit')"
       >
         <i class="fa fa-pencil"></i>
       </button>
     </p>
-
-    <!-- Agregar nuevo Modal -->
-    <div
-      class="modal fade"
-      id="addSkillModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="addModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addModalLabel">Agregar Skill</h5>
-            <button
-              type="button"
-              class="btn-close text-reset"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-
-          <div class="modal-body">
-            <form #addForm="ngForm" (ngSubmit)="agregarSkill(addForm)">
-              <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input
-                  type="text"
-                  ngModel
-                  name="nombre"
-                  class="form-control"
-                  id="nombre"
-                  placeholder="nombre"
-                  required
-                />
-
-                <input
-                  type="hidden"
-                  ngModel
-                  name="id"
-                  class="form-control"
-                  id="id"
-                  placeholder="id"
-                />
-                <input
-                  type="hidden"
-                  ngModel="{{ id_persona }}"
-                  name="id_persona"
-                  class="form-control"
-                  id="id_persona"
-                  placeholder="id_persona"
-                />
-              </div>
-              <div class="form-group">
-                <label for="competencia">Competencia</label>
-                <input
-                  type="number"
-                  min="1"
-                  max="100"
-                  ngModel
-                  name="competencia"
-                  class="form-control"
-                  id="competencia"
-                  placeholder="competencia"
-                  required
-                />
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  id=""
-                  data-bs-dismiss="modal"
-                  class="btn btn-secondary"
-                >
-                  Cerrar
-                </button>
-                <button
-                  [disabled]="addForm.invalid"
-                  type="submit"
-                  data-bs-dismiss="modal"
-                  class="btn btn-primary"
-                >
-                  Guardar cambios
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Editar Modal -->
     <div
@@ -153,7 +60,7 @@
       id="skillModal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="educationModalLabel"
+      aria-labelledby="skillModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-lg" role="document">
@@ -276,4 +183,94 @@
       </div>
     </div>
   </div>
+
+     <!-- Agregar nuevo Modal -->
+     <div
+     class="modal fade"
+     id="addSkillModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="addModalLabel"
+     aria-hidden="true"
+   >
+     <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="addModalLabel">Agregar Skill</h5>
+           <button
+             type="button"
+             class="btn-close text-reset"
+             data-bs-dismiss="modal"
+             aria-label="Close"
+           ></button>
+         </div>
+
+         <div class="modal-body">
+           <form #addForm="ngForm" (ngSubmit)="agregarSkill(addForm)">
+             <div class="form-group">
+               <label for="nombre">Nombre</label>
+               <input
+                 type="text"
+                 ngModel
+                 name="nombre"
+                 class="form-control"
+                 id="nombre"
+                 placeholder="nombre"
+                 required
+               />
+
+               <input
+                 type="hidden"
+                 ngModel
+                 name="id"
+                 class="form-control"
+                 id="id"
+                 placeholder="id"
+               />
+               <input
+                 type="hidden"
+                 ngModel="{{ id_persona }}"
+                 name="id_persona"
+                 class="form-control"
+                 id="id_persona"
+                 placeholder="id_persona"
+               />
+             </div>
+             <div class="form-group">
+               <label for="competencia">Competencia</label>
+               <input
+                 type="number"
+                 max="100"
+                 ngModel
+                 name="competencia"
+                 class="form-control"
+                 id="competencia"
+                 placeholder="competencia"
+                 required
+               />
+             </div>
+             <div class="modal-footer">
+               <button
+                 type="button"
+                 id=""
+                 data-bs-dismiss="modal"
+                 class="btn btn-secondary"
+               >
+                 Cerrar
+               </button>
+               <button
+                 [disabled]="addForm.invalid"
+                 type="submit"
+                 data-bs-dismiss="modal"
+                 class="btn btn-primary"
+               >
+                 Guardar cambios
+               </button>
+             </div>
+           </form>
+         </div>
+       </div>
+     </div>
+   </div>
+   
 </article>

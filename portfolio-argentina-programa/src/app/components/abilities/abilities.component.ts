@@ -82,7 +82,7 @@ export class AbilitiesComponent implements OnInit {
   }
 
   public onOpenModal(skill?: Skill, mode?: string): void {
-    const contenedor = document.getElementById('main-container');
+    const contenedor = document.getElementById('skill-container');
     const button = document.createElement('button');
     button.type = 'button';
     button.style.display = 'none';
