@@ -30,9 +30,7 @@ export class EducationComponent implements OnInit {
     this.educacionService.verEducacion().subscribe(
       (response: Educacion[]) => {
         this.educacion=response;
-        response.map(edu=>{
-          
-        });
+     
       },
       (error:HttpErrorResponse) => {
         console.log(error)

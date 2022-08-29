@@ -28,10 +28,7 @@ export class ProjectsComponent implements OnInit {
     this.proyectoService.verProyectos().subscribe(
       (response: Proyecto[]) => {
         this.proyectos=response;
-        response.map(edu=>{
-          this.id_persona=edu.id_persona;
-        });
-      },
+
       (error:HttpErrorResponse) => {
         console.log(error)
       }

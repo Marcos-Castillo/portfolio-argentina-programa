@@ -28,8 +28,7 @@ export class ExperienceComponent implements OnInit {
     this.experienciaService.verExperiencias().subscribe(
       (response: Experiencia[]) => {
         this.experiencia=response;
-        response.map(exp=>{
-          this.id_persona=exp.id_persona;
+  
         });
       },
       (error:HttpErrorResponse) => {

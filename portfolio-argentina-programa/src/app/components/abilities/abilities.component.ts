@@ -30,9 +30,7 @@ export class AbilitiesComponent implements OnInit {
     this.skillService.verSkills().subscribe(
       (response: Skill[]) => {
         this.skills=response;
-        response.map(sk=>{
-          this.id_persona=sk.id_persona;
-        });
+       
       },
       (error:HttpErrorResponse) => {
         console.log(error)
