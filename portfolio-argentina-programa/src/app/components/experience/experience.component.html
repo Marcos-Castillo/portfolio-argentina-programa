@@ -41,12 +41,13 @@
       <!-- Modal -->
     </h6>
     <div class="row align-items-center">
-      <p class="col m-4">{{ exp.ingreso }} - {{ exp.egreso }}</p>
-      <p class="col m-4">{{ exp.descripcion }}</p>
+      <p class="col m-4"><input type="month" class="border-0" ngModel="{{ exp.ingreso }}" disabled><input type="month" class="border-0" ngModel="{{ exp.egreso }}" disabled> </p>
+      <p class="col-7 m-4">{{ exp.descripcion }}</p>
     </div>
   </div>
 
   <!-- Agregar nuevo Modal -->
+
   <div
     class="modal fade"
     id="addExperienciaModal"
@@ -113,7 +114,7 @@
             <div class="form-group">
               <label for="ingreso">Ingreso</label>
               <input
-                type="text"
+                type="month"
                 ngModel
                 name="ingreso"
                 class="form-control"
@@ -125,7 +126,7 @@
             <div class="form-group">
               <label for="egreso">Egreso</label>
               <input
-                type="text"
+                type="month"
                 ngModel
                 name="egreso"
                 class="form-control"
@@ -224,7 +225,7 @@
             <div class="form-group">
               <label for="ingreso">Ingreso</label>
               <input
-                type="text"
+                type="month"
                 ngModel="{{ editExperiencia?.ingreso }}"
                 name="ingreso"
                 class="form-control"
@@ -235,7 +236,7 @@
             <div class="form-group">
               <label for="egreso">Egreso</label>
               <input
-                type="text"
+                type="month"
                 ngModel="{{ editExperiencia?.egreso }}"
                 name="egreso"
                 class="form-control"

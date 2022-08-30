@@ -15,7 +15,7 @@ export class AbilitiesComponent implements OnInit {
 
   editSkill?:Skill;
   deleteSkill?:Skill;
-  id_persona: Number = 213;
+  id_persona!: Number;
 
   constructor(
     private skillService:SkillService
@@ -30,6 +30,9 @@ export class AbilitiesComponent implements OnInit {
     this.skillService.verSkills().subscribe(
       (response: Skill[]) => {
         this.skills=response;
+        response.map(aux=>{
+          this.id_persona = aux.id_persona;
+        });
        
       },
       (error:HttpErrorResponse) => {
@@ -57,8 +60,8 @@ export class AbilitiesComponent implements OnInit {
     this.skillService.crearSkill(addForm.value).subscribe(
       (response: Skill) => {
         console.log(response);
-        this.verSkill();
         addForm.reset();
+        this.verSkill();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

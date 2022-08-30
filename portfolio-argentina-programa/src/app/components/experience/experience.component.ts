@@ -13,7 +13,7 @@ export class ExperienceComponent implements OnInit {
   experiencia?:Experiencia[];
   editExperiencia?:Experiencia;
   deleteExperiencia?:Experiencia;
-  id_persona: Number = 213;
+  id_persona!: Number;
 
   constructor(
     private experienciaService:ExperienciaService
@@ -28,7 +28,8 @@ export class ExperienceComponent implements OnInit {
     this.experienciaService.verExperiencias().subscribe(
       (response: Experiencia[]) => {
         this.experiencia=response;
-  
+        response.map(aux=>{
+          this.id_persona = aux.id_persona;
         });
       },
       (error:HttpErrorResponse) => {
@@ -56,8 +57,8 @@ export class ExperienceComponent implements OnInit {
     this.experienciaService.crearExperiencia(addForm.value).subscribe(
       (response: Experiencia) => {
         console.log(response);
-        this.verExperiencia();
         addForm.reset();
+        this.verExperiencia();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

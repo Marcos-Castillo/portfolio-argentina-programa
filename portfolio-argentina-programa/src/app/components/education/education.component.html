@@ -44,8 +44,8 @@
       {{ edu.descripcion }}
     </p>
     <p class="container">
-      Expedición: {{ edu.expedicion }}
-      <a class="btn btn-ligth" target="_blank" href="{{ edu.credencial }}"
+      Expedición: <input type="month" class="border-0" ngModel="{{ edu.expedicion }}" disabled>
+      <a class="btn btn-outline-secondary" target="_blank" href="{{ edu.credencial }}"
         >Mostrar credencial</a
       >
     </p>
@@ -118,7 +118,7 @@
             <div class="form-group">
               <label for="expedicion">Expedicion</label>
               <input
-                type="text"
+                type="month"
                 ngModel
                 name="expedicion"
                 class="form-control"
@@ -229,7 +229,7 @@
             <div class="form-group">
               <label for="expedicion">Expedicion</label>
               <input
-                type="text"
+                type="month"
                 ngModel="{{ editEducacion?.expedicion }}"
                 name="expedicion"
                 class="form-control"

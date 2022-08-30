@@ -14,7 +14,7 @@ export class EducationComponent implements OnInit {
   educacion?: Educacion[];
   editEducacion?:Educacion;
   deleteEducacion?:Educacion;
-  id_persona: Number = 213;
+  id_persona!: Number;
 
   constructor(
     private educacionService:EducacionService
@@ -30,7 +30,9 @@ export class EducationComponent implements OnInit {
     this.educacionService.verEducacion().subscribe(
       (response: Educacion[]) => {
         this.educacion=response;
-     
+        response.map(aux=>{
+          this.id_persona = aux.id_persona;
+        });
       },
       (error:HttpErrorResponse) => {
         console.log(error)
@@ -57,8 +59,8 @@ export class EducationComponent implements OnInit {
     this.educacionService.crearEducacion(addForm.value).subscribe(
       (response: Educacion) => {
         console.log(response);
-        this.verEducacion();
         addForm.reset();
+        this.verEducacion();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

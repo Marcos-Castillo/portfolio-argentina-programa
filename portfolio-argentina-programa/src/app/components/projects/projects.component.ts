@@ -13,7 +13,7 @@ export class ProjectsComponent implements OnInit {
   proyectos?:Proyecto[];
   editProyecto?:Proyecto;
   deleteProyecto?:Proyecto;
-  id_persona: Number = 213;
+  id_persona!: Number;
 
   constructor(
     private proyectoService:ProyectoService
@@ -28,7 +28,10 @@ export class ProjectsComponent implements OnInit {
     this.proyectoService.verProyectos().subscribe(
       (response: Proyecto[]) => {
         this.proyectos=response;
-
+        response.map(aux=>{
+          this.id_persona = aux.id_persona;
+        });
+      },
       (error:HttpErrorResponse) => {
         console.log(error)
       }
@@ -54,8 +57,9 @@ export class ProjectsComponent implements OnInit {
     this.proyectoService.crearProyecto(addForm.value).subscribe(
       (response: Proyecto) => {
         console.log(response);
-        this.verProyecto();
         addForm.reset();
+        this.verProyecto();
+        
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
