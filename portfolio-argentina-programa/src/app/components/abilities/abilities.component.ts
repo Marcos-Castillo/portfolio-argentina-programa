@@ -62,10 +62,12 @@ export class AbilitiesComponent implements OnInit {
         console.log(response);
         addForm.reset();
         this.verSkill();
+        addForm.controls['id_persona'].setValue(this.id_persona);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
         addForm.reset();
+        addForm.controls['id_persona'].setValue(this.id_persona);
       }
     );
   }

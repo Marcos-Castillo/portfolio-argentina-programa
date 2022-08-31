@@ -1,120 +1,164 @@
-<div class="imagen-fondo">
-<div class="row">
-  <div class="col-3">
-    <img
-      class="w-100 img-thumbnail image-circle my-5 trasform3d"
-      src="{{ persona?.urlImg }}"
-      onerror="this.src='../../../assets/img/perfil.jpeg';"
-      alt="retrato"
-    />
+<div *ngIf="persona?.nombre == null" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="m-0 row justify-content-center">
+    <div class="my-5 col-auto text-center">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+      <h4 class="alert-heading">Cargando...</h4>
+    </div>
   </div>
-  <div class="col-9 ">
-    <h2 class="display-5 my-4 fw-bold">
-      {{ persona?.nombre }} {{ persona?.apellido }}
-    </h2>
-    <p>{{ persona?.profesion }}</p>
-    <p>{{ persona?.ubicacion }}</p>
+</div>
+<div *ngIf="persona?.nombre != null" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="imagen-fondo">
+    <div class="row">
+      <div class="col-3">
+        <img
+          class="w-100 img-thumbnail image-circle my-5 trasform3d"
+          src="{{ persona?.urlImg }}"
+          onerror="this.src='../../../assets/img/perfil.jpeg';"
+          alt="retrato"
+        />
+      </div>
+      <div class="col-9">
+        <h2 class="display-5 my-4 fw-bold">
+          {{ persona?.nombre }} {{ persona?.apellido }}
+        </h2>
+        <p>{{ persona?.profesion }}</p>
+        <p>{{ persona?.ubicacion }}</p>
 
-    <h2 class="display-5 my-4 ">Acerca de</h2>
-    <p  >
-      {{ persona?.about }}
-      
+        <h2 class="display-5 my-4">Acerca de</h2>
+        <p>
+          {{ persona?.about }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-around mt-3">
+    <a
+      class="btn btn-outline-dark col-3"
+      target="_blank"
+      href="{{ persona?.urlGithub }}"
+      ><i class="bi bi-github"></i> GitHub</a
+    >
+    <a
+      class="btn btn-outline-dark col-3"
+      target="_blank"
+      href="{{ persona?.urlLinkedin }}"
+      ><i class="bi bi-linkedin"></i> Linkedin</a
+    >
+    <a class="btn btn-outline-dark col-3" routerLink="/login"
+      ><i class="bi bi-box-arrow-in-right"></i> Iniciar Sesion</a
+    >
+  </div>
+  <div class="row">
+    <h2 class="display-5 my-4">Hard Skills & Soft Skills</h2>
+  </div>
+
+  <div
+    *ngIf="
+      persona?.skillList?.length == 0 || persona?.skillList?.length == null
+    "
+    class="col-lg-12 col-md-12 col-xl-12"
+  >
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">No hay Registros!</h4>
+      <p>No se encontraron Habilidades</p>
+    </div>
+  </div>
+  <div class="row row-cols-2">
+    <div *ngFor="let skill of persona?.skillList" class="col my-1">
+      <div class="">
+        <ngb-progressbar
+          class="shadow"
+          type="primary"
+          [value]="skill.competencia"
+          [striped]="true"
+          [animated]="true"
+          height="1.5rem"
+          ><span class="fs-6 text-shadow"
+            >{{ skill.nombre }}
+          </span></ngb-progressbar
+        >
+      </div>
+    </div>
+  </div>
+
+  <h2 class="display-5 my-4">Educación</h2>
+  <div class="row"><div></div></div>
+  <div
+    *ngIf="
+      persona?.educacionList?.length == 0 ||
+      persona?.educacionList?.length == null
+    "
+    class="col-lg-12 col-md-12 col-xl-12"
+  >
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">No hay Registros!</h4>
+      <p>No se encontraron Educaciones</p>
+    </div>
+  </div>
+  <div *ngFor="let edu of persona?.educacionList" class="card mb-4 shadow">
+    <h6 class="card-header">
+      {{ edu.titulo }}
+    </h6>
+    <p class="card-body">
+      {{ edu.descripcion }}
+    </p>
+    <p class="container">
+      Expedición:
+      <input
+        type="month"
+        class="border-0"
+        ngModel="{{ edu.expedicion }}"
+        disabled
+      />
+      <a
+        class="btn btn-outline-secondary"
+        target="_blank"
+        href="{{ edu.credencial }}"
+        >Mostrar credencial</a
+      >
     </p>
   </div>
-</div>
 
- 
-</div>
-<div class="d-flex justify-content-around mt-3">
-    <a class="btn btn-outline-dark col-3" target="_blank" href="{{persona?.urlGithub}}"><i class="bi bi-github"></i> GitHub</a>
-    <a class="btn btn-outline-dark col-3" target="_blank" href="{{persona?.urlLinkedin}}"><i class="bi bi-linkedin"></i> Linkedin</a>
-    <a class="btn btn-outline-dark col-3" routerLink="/login"><i class="bi bi-box-arrow-in-right"></i> Iniciar Sesion</a>
-  </div>
-<div class="row">
-  <h2 class="display-5 my-4">Hard Skills & Soft Skills</h2>
-</div>
-
-<div
-  *ngIf="persona?.skillList?.length == 0 || persona?.skillList?.length == null"
-  class="col-lg-12 col-md-12 col-xl-12"
->
-  <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">No hay Registros!</h4>
-    <p>No se encontraron Habilidades</p>
-  </div>
-</div>
-<div class="row row-cols-2 ">
-<div *ngFor="let skill of persona?.skillList" class="col my-1">
-  <div class="">
-    <ngb-progressbar
-      class="shadow"
-      type="primary"
-      [value]="skill.competencia"
-      [striped]="true"
-      [animated]="true"
-      height="1.5rem"
-      ><span class="fs-6 text-shadow">{{ skill.nombre }} </span></ngb-progressbar
-    >
-  </div>
-</div>
-</div>
-
-
-<h2 class="display-5 my-4">Educación</h2>
-<div class="row"><div></div></div>
-<div
-  *ngIf="
-    persona?.educacionList?.length == 0 ||
-    persona?.educacionList?.length == null
-  "
-  class="col-lg-12 col-md-12 col-xl-12"
->
-  <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">No hay Registros!</h4>
-    <p>No se encontraron Educaciones</p>
-  </div>
-</div>
-<div *ngFor="let edu of persona?.educacionList" class="card mb-4 shadow">
-  <h6 class="card-header">
-    {{ edu.titulo }}
-  </h6>
-  <p class="card-body">
-    {{ edu.descripcion }}
-  </p>
-  <p class="container">
-    Expedición: <input type="month" class="border-0" ngModel="{{ edu.expedicion }}" disabled>
-    <a class="btn btn-outline-secondary" target="_blank" href="{{ edu.credencial }}"
-      >Mostrar credencial</a
-    >
-  </p>
-</div>
-
-<div>
-  <div class="col-12">
-    <div class="">
-      <div class="d-flex justify-content-between align-items-center">
-        <h2 class="display-5 my-4">Proyectos</h2>
-      </div>
-      <div *ngIf="(persona?.proyectoList?.length == 0)||(persona?.proyectoList?.length==null)" class="col-lg-12 col-md-12 col-xl-12">
-        <div class="alert alert-danger" role="alert">
+  <div>
+    <div class="col-12">
+      <div class="">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="display-5 my-4">Proyectos</h2>
+        </div>
+        <div
+          *ngIf="
+            persona?.proyectoList?.length == 0 ||
+            persona?.proyectoList?.length == null
+          "
+          class="col-lg-12 col-md-12 col-xl-12"
+        >
+          <div class="alert alert-danger" role="alert">
             <h4 class="alert-heading">No hay Registros!</h4>
             <p>No se encontro Proyectos</p>
+          </div>
         </div>
-      </div>
-      <div class="d-flex justify-content-around gap-4 row row-cols-6">
-        <div *ngFor="let proyect of persona?.proyectoList">
-          <div class="shadow zoom">
-            <div class="card-size" >
-              <img
-              class="rounded img-fluid w-100"
-              src="{{proyect.descripcion}}" 
-              onerror="this.src='../../../assets/img/error.jpg';"
-            />
-            </div>
-            <div class="">
-              <div class="image_title">
-                <a href="{{ proyect.link }}" target="_blank">{{ proyect.titulo }}</a>
-                <a href="{{ proyect.urlRepositorio }}" target="_blank">Repositorio Github</a>
+        <div class="d-flex justify-content-around gap-4 row row-cols-6">
+          <div *ngFor="let proyect of persona?.proyectoList">
+            <div class="shadow zoom">
+              <div class="card-size">
+                <img
+                  class="rounded img-fluid w-100"
+                  src="{{ proyect.descripcion }}"
+                  onerror="this.src='../../../assets/img/error.jpg';"
+                />
+              </div>
+              <div class="">
+                <div class="image_title">
+                  <a href="{{ proyect.link }}" target="_blank">{{
+                    proyect.titulo
+                  }}</a>
+                  <a href="{{ proyect.urlRepositorio }}" target="_blank"
+                    >Repositorio Github</a
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -122,25 +166,36 @@
       </div>
     </div>
   </div>
-</div>
-<h2 class="display-5 my-4">Experiencia</h2>
-<div
-  *ngIf="
-    persona?.experienciaList?.length == 0 ||
-    persona?.experienciaList?.length == null
-  "
-  class="col-lg-12 col-md-12 col-xl-12"
->
-  <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">No hay Registros!</h4>
-    <p>No se encontro Experiencia</p>
+  <h2 class="display-5 my-4">Experiencia</h2>
+  <div
+    *ngIf="
+      persona?.experienciaList?.length == 0 ||
+      persona?.experienciaList?.length == null
+    "
+    class="col-lg-12 col-md-12 col-xl-12"
+  >
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">No hay Registros!</h4>
+      <p>No se encontro Experiencia</p>
+    </div>
+  </div>
+  <div *ngFor="let exp of persona?.experienciaList" class="card mb-4 shadow">
+    <h6 class="card-header">{{ exp.puesto }}</h6>
+    <div class="row align-items-center">
+      <p class="col m-4">
+        <input
+          type="month"
+          class="border-0"
+          ngModel="{{ exp.ingreso }}"
+          disabled
+        /><input
+          type="month"
+          class="border-0"
+          ngModel="{{ exp.egreso }}"
+          disabled
+        />
+      </p>
+      <p class="col-7 m-4">{{ exp.descripcion }}</p>
+    </div>
   </div>
 </div>
-<div *ngFor="let exp of persona?.experienciaList" class="card mb-4 shadow">
-  <h6 class="card-header">{{ exp.puesto }}</h6>
-  <div class="row align-items-center">
-    <p class="col m-4"><input type="month" class="border-0" ngModel="{{ exp.ingreso }}" disabled><input type="month" class="border-0" ngModel="{{ exp.egreso }}" disabled> </p>
-    <p class="col-7 m-4">{{ exp.descripcion }}</p>
-  </div>
-</div>
-

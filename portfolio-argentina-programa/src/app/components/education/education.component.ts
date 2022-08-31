@@ -29,7 +29,17 @@ export class EducationComponent implements OnInit {
   public verEducacion(): void {
     this.educacionService.verEducacion().subscribe(
       (response: Educacion[]) => {
-        this.educacion=response;
+        this.educacion=response.sort((a,b) => {
+          if (a.expedicion > b.expedicion) {
+              return 1;
+          }
+      
+          if (a.expedicion < b.expedicion) {
+              return -1;
+          }
+      
+          return 0;
+      });
         response.map(aux=>{
           this.id_persona = aux.id_persona;
         });
@@ -61,10 +71,12 @@ export class EducationComponent implements OnInit {
         console.log(response);
         addForm.reset();
         this.verEducacion();
+        addForm.controls['id_persona'].setValue(this.id_persona);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
         addForm.reset();
+        addForm.controls['id_persona'].setValue(this.id_persona);
       }
     );
   }

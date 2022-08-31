@@ -27,7 +27,17 @@ export class ExperienceComponent implements OnInit {
   public verExperiencia(): void {
     this.experienciaService.verExperiencias().subscribe(
       (response: Experiencia[]) => {
-        this.experiencia=response;
+        this.experiencia=response.sort((a,b) => {
+          if (a.ingreso > b.ingreso) {
+              return 1;
+          }
+      
+          if (a.ingreso < b.ingreso) {
+              return -1;
+          }
+      
+          return 0;
+      });
         response.map(aux=>{
           this.id_persona = aux.id_persona;
         });
@@ -59,10 +69,12 @@ export class ExperienceComponent implements OnInit {
         console.log(response);
         addForm.reset();
         this.verExperiencia();
+        addForm.controls['id_persona'].setValue(this.id_persona);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
         addForm.reset();
+        addForm.controls['id_persona'].setValue(this.id_persona);
       }
     );
   }
